@@ -106,15 +106,26 @@
         }
         var calcBtn = document.getElementById("calcBtn");
         var clrBtn = document.getElementById("clrBtn");
-        var surcharge = function() {
-            if (boxEls[1].value > boxEls[2].value) {
-                boxEls[3].value = (boxEls[1].value-boxEls[2].value)/boxEls[0].value;
-            } else {
-                boxEls[3].value = (boxEls[2].value-boxEls[1].value)/boxEls[0].value;
+        var part1 = function() {
+            var surcharge = (boxEls[2].value-boxEls[1].value)/boxEls[0].value;
+            boxEls[3].value = surcharge;
+        }
+        var part2 = function() {
+            var fuelQuan = boxEls[4].value/boxEls[0].value;
+            var baseCost = boxEls[1].value*fuelQuan;
+            var currentC = boxEls[2].value*fuelQuan;
+            var fuelSurc = boxEls[3].value*boxEls[4].value;
+            boxEls[5].value = fuelQuan;
+            boxEls[6].value = baseCost;
+            boxEls[7].value = currentC;
+            boxEls[8].value = fuelSurc;
+            if (fuelSurc === 0) {
+                boxEls[8].value = null;
             }
         }
         var calculate = function() {
-            surcharge();
+            part1();
+            part2();
         };
         var clearAll = function() {
             for (var i = 0; i < boxEls.length; i++) {
