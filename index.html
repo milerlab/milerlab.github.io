@@ -13,7 +13,7 @@
                 top: -21px;
                 left: -1px;
                 background-color: rgb(16, 163, 126);
-                width: 98.4%;
+                width: 98.8%;
                 height: 40px;
                 padding: 1px;
                 padding-left: 10px;
@@ -44,7 +44,7 @@
                 position: absolute;
                 background-color: rgb(0, 217, 255);
                 color: rgb(0, 14, 117);
-                top: 358px;
+                top: 500px;
                 border: none;
                 border-radius: 3px;
                 height: 31px;
@@ -56,39 +56,35 @@
             #calcBtn {
                 left: 13px;
             }
-            #undoBtn {
-                left: 109px;
-            }
             #clrBtn {
-                left: 167px;
+                left: 111px;
             }
         </style>
     </head>
     <body>
     <h1 id="top-bar">Fuel Surcharge</h1>
     <!--#1-->
-    <span class="box"><input id="box1" type="number" step="0.01" ></span> <span id="mpg" class="label">MPG/KPL</span>
+    <input id="box1" class="box" type="number" step="0.01"><span id="mpg" class="label">MPG/KPL</span>
     <!--#2-->
-    <span class="box"><input id="box2" type="number" step="0.01"></span> <span id="base" class="label">Base Fuel Price</span>
+    <input id="box2" class="box" type="number" step="0.01"><span id="base" class="label">Base Fuel Price</span>
     <!--#3-->
-    <span class="box"><input id="box3" type="number" step="0.01"></span> <span id="current" class="label">Current Fuel Price</span>
+    <input id="box3" class="box" type="number" step="0.01"><span id="current" class="label">Current Fuel Price</span>
     <!--#4-->
-    <span class="box"><input id="box4" type="number" step="0.01"></span> <span id="surcharge" class="label">Fuel Surcharge</span>
+    <input id="box4" class="box" type="number" step="0.01"><span id="surcharge" class="label">Fuel Surcharge</span>
     <!--Next...-->
     <span id="clarification">Your trip:</span>
     <!--#5-->
-    <span class="box"><input id="box5" type="number" step="0.01"></span> <span id="distance" class="label">Trip Distance</span>
+    <input id="box5" class="box" type="number" step="0.01"> <span id="distance" class="label">Trip Distance</span>
     <!--#6-->
-    <span class="box"><input id="box6" type="number" step="0.01"></span> <span id="quantity" class="label">Trip Fuel Quantity</span>
+    <input id="box6" class="box" type="number" step="0.01"> <span id="quantity" class="label">Trip Fuel Quantity</span>
     <!--#7-->
-    <span class="box"><input id="box7" type="number" step="0.01"></span> <span id="trip-b" class="label">Trip Base Fuel Cost</span>
+    <input id="box7" class="box" type="number" step="0.01"> <span id="trip-b" class="label">Trip Base Fuel Cost</span>
     <!--#8-->
-    <span class="box"><input id="box8" type="number" step="0.01"></span> <span id="trip-c" class="label">Trip Current Fuel Cost</span>
+    <input id="box8" class="box" type="number" step="0.01"> <span id="trip-c" class="label">Trip Current Fuel Cost</span>
     <!--#9-->
-    <span class="box"><input type="number" step="0.01"></span> <span id="trip-s" class="label">Trip Fuel Surcharge</span>
+    <input id="box9"class="box" type="number" step="0.01"> <span id="trip-s" class="label">Trip Fuel Surcharge</span>
     <!--buttons-->
     <button id="calcBtn" class="button">CALCULATE</button>
-    <button id="undoBtn" class="button">UNDO</button>
     <button id="clrBtn" class="button">CLEAR ALL</button>
     <!--JavaScript-->
     <script>
@@ -96,10 +92,10 @@
         var labelEls = document.querySelectorAll(".label");
         var positions = function(elGroup) {
             if (i >= 4) {
-                elGroup[i].style.top = 55+i*30+30 + "px";
+                elGroup[i].style.top = 55+i*40+40 + "px";
             }
             else {
-                elGroup[i].style.top = 55+i*30+"px";
+                elGroup[i].style.top = 55+i*40+"px";
             }
         }
         for (var i = 0; i < boxEls.length; i++) {
@@ -110,18 +106,23 @@
         }
         var calcBtn = document.getElementById("calcBtn");
         var clrBtn = document.getElementById("clrBtn");
-        var mpg = document.getElementById("box1");
-        var base = document.getElementById("box2");
-        var current = document.getElementById("box3");
-        var surcharge = document.getElementById("box4")
-        var calculate = function() {
+        var surcharge = function() {
             if (boxEls[1].value > boxEls[2].value) {
                 boxEls[3].value = (boxEls[1].value-boxEls[2].value)/boxEls[0].value;
             } else {
                 boxEls[3].value = (boxEls[2].value-boxEls[1].value)/boxEls[0].value;
             }
+        }
+        var calculate = function() {
+            surcharge();
         };
+        var clearAll = function() {
+            for (var i = 0; i < boxEls.length; i++) {
+                boxEls[i].value = null;
+            }
+        }
         calcBtn.addEventListener("click", calculate);
+        clrBtn.addEventListener("click", clearAll);
     </script>
     </body>
 </html>
