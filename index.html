@@ -59,6 +59,36 @@
             #clrBtn {
                 left: 111px;
             }
+            h4 {
+                width: 108px;
+                padding-left: -30px;
+            }
+            #ad {
+                position: absolute;
+                top: 100px;
+                left: 462px;
+                width: 76px;
+                padding-left: 16px;
+                padding-right: 23px;
+                color: gold;
+                position: absolute;
+                font-family: sans-serif;
+                background-color: rgb(252, 131, 131);
+                border: 3px ridge gold;
+            }
+            a {
+                position: relative;
+                left: -3px;
+                text-decoration: none;
+                color: rgb(49, 62, 204);
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            li {
+               position: relative;
+                left: -33px; 
+            }
         </style>
     </head>
     <body>
@@ -86,6 +116,14 @@
     <!--buttons-->
     <button id="calcBtn" class="button">CALCULATE</button>
     <button id="clrBtn" class="button">CLEAR ALL</button>
+    <!--links-->
+    <span id="ad"><h4>Download these apps for more calculators:</h4>
+    <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.milerlab.billtip">Everyday Calculator</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.milerlab.fuelsurcharge">Trucking Calculator</a></li>
+    </ul>
+        
+    </span>
     <!--JavaScript-->
     <script>
         var boxEls = document.querySelectorAll(".box");
