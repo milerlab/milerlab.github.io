@@ -143,31 +143,34 @@
         var calcBtn = document.getElementById("calcBtn");
         var clrBtn = document.getElementById("clrBtn");
         var calculate = function() {
+            // a buncha variables
             var fuelQuan = boxEls[4].value/boxEls[0].value;
             var baseCost = boxEls[1].value*fuelQuan;
             var currentC = boxEls[2].value*fuelQuan;
             var fuelSurc = boxEls[3].value*boxEls[4].value;
             var surcharge = (boxEls[2].value-boxEls[1].value)/boxEls[0].value;
+            // values array
+            var variables = [fuelQuan, baseCost, currentC, fuelSurc]
+            // calculate values
             boxEls[3].value = surcharge;
             boxEls[5].value = fuelQuan;
             boxEls[6].value = baseCost;
             boxEls[7].value = currentC;
             boxEls[8].value = fuelSurc;
+            // don't do weird stuff
             if (surcharge === 0) {
                 boxEls[3].value = null;
             }
-            if (fuelQuan === 0) {
-                boxEls[5].value = null;
+            for (var i = 5; i < boxEls.length; i++) {
+                if (variables[i-5] == 0) {
+                    boxEls[i].value = null;
+                }
             }
-            if (baseCost === 0) {
-                boxEls[6].value = null;
+            // don't calculate until stuff is inside
+            if (boxEls[0].value == "" || boxEls[1].value == "" || boxEls[2].value == "") {
+                boxEls[3].value = "";
             }
-            if (currentC === 0) {
-                boxEls[7].value = null;
-            }
-            if (fuelSurc === 0) {
-                boxEls[8].value = null;
-            }
+            console.log(boxEls[0].value)
         };
         var clearAll = function() {
             for (var i = 0; i < boxEls.length; i++) {
