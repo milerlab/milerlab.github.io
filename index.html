@@ -124,8 +124,10 @@
     </span>
     <!--JavaScript-->
     <script>
+        // find elements
         var boxEls = document.querySelectorAll(".box");
         var labelEls = document.querySelectorAll(".label");
+        // set positions
         var positions = function(elGroup) {
             if (i >= 4) {
                 elGroup[i].style.top = 55+i*30+30 + "px";
@@ -140,23 +142,25 @@
         for (var i = 0; i < labelEls.length; i++) {
             positions(labelEls);
         }
+        // buttons
         var calcBtn = document.getElementById("calcBtn");
         var clrBtn = document.getElementById("clrBtn");
         var calculate = function() {
             // a buncha variables
+            var surcharge = (boxEls[2].value-boxEls[1].value)/boxEls[0].value;
             var fuelQuan = boxEls[4].value/boxEls[0].value;
             var baseCost = boxEls[1].value*fuelQuan;
             var currentC = boxEls[2].value*fuelQuan;
             var fuelSurc = boxEls[3].value*boxEls[4].value;
-            var surcharge = (boxEls[2].value-boxEls[1].value)/boxEls[0].value;
             // values array
             var variables = [fuelQuan, baseCost, currentC, fuelSurc]
-            // calculate values
-            boxEls[3].value = surcharge;
-            boxEls[5].value = fuelQuan;
-            boxEls[6].value = baseCost;
-            boxEls[7].value = currentC;
-            boxEls[8].value = fuelSurc;
+            // calculate rounded values
+            var rounded = [surcharge.toFixed(3), fuelQuan.toFixed(3), baseCost.toFixed(3), currentC.toFixed(3), fuelSurc.toFixed(3)]
+            boxEls[3].value = rounded[0];
+            boxEls[5].value = rounded[1];
+            boxEls[6].value = rounded[2];
+            boxEls[7].value = rounded[3];
+            boxEls[8].value = rounded[4];
             // don't do weird stuff
             if (surcharge === 0) {
                 boxEls[3].value = null;
@@ -170,14 +174,17 @@
             if (boxEls[0].value == "" || boxEls[1].value == "" || boxEls[2].value == "") {
                 boxEls[3].value = "";
             }
-            console.log(boxEls[0].value)
         };
         var clearAll = function() {
             for (var i = 0; i < boxEls.length; i++) {
                 boxEls[i].value = null;
             }
         }
-        calcBtn.addEventListener("click", calculate);
+        var calculateTwice = function() {
+            calculate();
+            calculate();
+        }
+        calcBtn.addEventListener("click", calculateTwice);
         clrBtn.addEventListener("click", clearAll);
     </script>
     </body>
