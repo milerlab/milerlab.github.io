@@ -1,19 +1,273 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<div class="tab">
-  <button class="tablinks" onclick="openFuelSurcharge()">Fuel Surcharge</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-</div>
-<script>
-function openFuelSurcharge() {
-    window.location.assign("fuelsurcharge.html");
-}
-</script>
-   
-</body>
-</html> 
+    <head>
+        <meta charset="utf-8">
+        <title>Fuel Surcharge Calculator</title>
+        <style>
+            body {
+                background-color: rgb(0, 14, 117);
+            }
+            .header {
+                color: white;
+                position: absolute;
+                top: -21px;
+                left: -1px;
+                background-color: rgb(16, 163, 126);
+                width: 98.4%;
+                height: 40px;
+                padding: 1px;
+                padding-left: 10px;
+                font-family: sans-serif;
+            }
+            .fs-box, .bt-box {
+                position: absolute;
+                margin-left: 5px;
+            }
+            input[type=number]:focus {
+                border: 2.5px solid gold;
+                
+            }
+            .fs-label, .bt-label {
+                color: gold;
+                position: absolute;
+                left: 222px;
+                font-family: sans-serif;
+            }
+            #clarification {
+                color: gold;
+                position: absolute;
+                top: 175px;
+                margin-left: 5px;
+                font-family: sans-serif;
+            }
+            .button {
+                position: absolute;
+                background-color: rgb(0, 217, 255);
+                color: rgb(0, 14, 117);
+                top: 358px;
+                border: none;
+                border-radius: 3px;
+                height: 31px;
+                cursor: pointer;
+            }
+            .button:hover {
+                background-color: rgb(168, 243, 255);
+            }
+            #fs-calcBtn, #bt-calcBtn {
+                left: 13px;
+            }
+            #fs-clrBtn, #bt-clrBtn {
+                left: 111px;
+            }
+            h4 {
+                width: 108px;
+                padding-left: -30px;
+            }
+            #ad {
+                position: absolute;
+                top: 35px;
+                left: 462px;
+                width: 76px;
+                padding-left: 16px;
+                padding-right: 23px;
+                color: red;
+                position: absolute;
+                font-family: sans-serif;
+            }
+            a {
+                position: relative;
+                left: -3px;
+                text-decoration: underline;
+                color: red;
+            }
+            a:hover {
+                color: rgb(255, 132, 0);
+            }
+            li {
+               position: relative;
+               left: -33px; 
+            }
+            #open-surc {
+                position: absolute;
+                background-color: gold;
+                border: none;
+                border-radius: 5px;
+                height: 25px;
+                cursor: pointer;
+                left: 257px;
+            }
+            #open-surc:hover {
+                background-color: yellow;
+            }
+            #open-bt {
+                position: absolute;
+                background-color: gold;
+                border: none;
+                border-radius: 5px;
+                height: 25px;
+                cursor: pointer;
+                left: 362px;
+            }
+            #open-bt:hover {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+    <!--fuel surcharge-->
+    <div id="fuel-surcharge">
+    <!--header-->
+    <h1 class="header">Fuel Surcharge</h1>
+    <!--#1-->
+    <input class="fs-box" type="number" step="0.001"><span class="fs-label">MPG/KPL</span>
+    <!--#2-->
+    <input class="fs-box" type="number" step="0.001"><span class="fs-label">Base Fuel Price</span>
+    <!--#3-->
+    <input class="fs-box" type="number" step="0.001"><span class="fs-label">Current Fuel Price</span>
+    <!--#4-->
+    <input class="fs-box" type="number" step="0.001"><span class="fs-label">Fuel Surcharge</span>
+    <!--Next...-->
+    <span id="clarification">Your trip:</span>
+    <!--#5-->
+    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Distance</span>
+    <!--#6-->
+    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Fuel Quantity</span>
+    <!--#7-->
+    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Base Fuel Cost</span>
+    <!--#8-->
+    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Current Fuel Cost</span>
+    <!--#9-->
+    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Fuel Surcharge</span>
+    <!--buttons-->
+    <button id="fs-calcBtn" class="button">CALCULATE</button>
+    <button id="fs-clrBtn" class="button">CLEAR ALL</button>
+    </div>
+    <!--links-->
+    <span id="ad"><h4>Download these apps for more calculators:</h4>
+    <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.milerlab.billtip" target="_blank">Everyday Calculator</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.milerlab.fuelsurcharge" target="_blank">Trucking Calculator</a></li>
+    </ul>
+    </span>
+    <!--billtip-->
+    <div id="billtip">
+    <!--header-->
+    <h1 class="header">Billtip</h1>
+    <!--#1-->
+    <input class="bt-box" type="number" step="0.001"><span id="mpg" class="bt-label">Amount Due Before Tip</span>
+    <!--#2-->
+    <input class="bt-box" type="number" step="0.001"><span id="base" class="bt-label">Tax</span>
+    <!--#3-->
+    <input class="bt-box" type="number" step="0.001"><span id="current" class="bt-label">Tip Percent (%)</span>
+    <!--#4-->
+    <input class="bt-box" type="number" step="0.001"><span id="surcharge" class="bt-label">Tip Amount</span>
+    <!--#5-->
+    <input class="bt-box" type="number" step="0.001"> <span id="distance" class="bt-label">Split Count</span>
+    <!--#6-->
+    <input class="bt-box" type="number" step="0.001"> <span id="quantity" class="bt-label">Amount Due After Tip</span>
+    <!--#7-->
+    <input class="bt-box" type="number" step="0.001"> <span id="trip-b" class="bt-label">Amount Due Per Person</span>
+    <!--buttons-->
+    <button id="bt-calcBtn" class="button">CALCULATE</button>
+    <button id="bt-clrBtn" class="button">CLEAR ALL</button>
+    </div>
+    <!--open each calculator-->
+    <button id="open-surc">Fuel Surcharge</button>
+    <button id="open-bt">Billtip</button>
+    <!--JavaScript-->
+    <script>
+        // find elements
+        var fsBoxEls = document.querySelectorAll(".fs-box");
+        var fsLabelEls = document.querySelectorAll(".fs-label");
+        var btBoxEls = document.querySelectorAll(".bt-box");
+        var btLabelEls = document.querySelectorAll(".bt-label");
+        // set positions
+        var positions = function(elGroup) {
+            if (elGroup === fsBoxEls || elGroup === fsLabelEls) {
+                if (i >= 4) {
+                    elGroup[i].style.top = 55+i*30+30 + "px";
+                } else {
+                    elGroup[i].style.top = 55+i*30+"px";
+                }
+            } else if (elGroup === btBoxEls || elGroup === btLabelEls) {
+                elGroup[i].style.top = 55+i*44+"px";
+            }
+        }
+        for (var i = 0; i < fsBoxEls.length; i++) {
+            positions(fsBoxEls);
+        }
+        for (var i = 0; i < fsLabelEls.length; i++) {
+            positions(fsLabelEls);
+        }
+        for (var i = 0; i < btBoxEls.length; i++) {
+            positions(btBoxEls);
+        }
+        for (var i = 0; i < btLabelEls.length; i++) {
+            positions(btLabelEls);
+        }
+        // buttons
+        var fsCalcBtn = document.getElementById("fs-calcBtn");
+        var fsClrBtn = document.getElementById("fs-clrBtn");
+        var fsCalculate = function() {
+            // a buncha variables
+            var surcharge = (fsBoxEls[2].value-fsBoxEls[1].value)/fsBoxEls[0].value;
+            var fuelQuan = fsBoxEls[4].value/fsBoxEls[0].value;
+            var baseCost = fsBoxEls[1].value*fuelQuan;
+            var currentC = fsBoxEls[2].value*fuelQuan;
+            var fuelSurc = fsBoxEls[3].value*fsBoxEls[4].value;
+            // values array
+            var variables = [fuelQuan, baseCost, currentC, fuelSurc]
+            // calculate rounded values
+            var fsRounded = [surcharge.toFixed(3), fuelQuan.toFixed(3), baseCost.toFixed(3), currentC.toFixed(3), fuelSurc.toFixed(3)]
+            fsBoxEls[3].value = fsRounded[0];
+            fsBoxEls[5].value = fsRounded[1];
+            fsBoxEls[6].value = fsRounded[2];
+            fsBoxEls[7].value = fsRounded[3];
+            fsBoxEls[8].value = fsRounded[4];
+            // don't do weird stuff
+            if (surcharge === 0) {
+                fsBoxEls[3].value = null;
+            }
+            for (var i = 5; i < fsBoxEls.length; i++) {
+                if (variables[i-5] == 0) {
+                    fsBoxEls[i].value = null;
+                }
+            }
+            // don't calculate until stuff is inside
+            if (fsBoxEls[0].value == "" || fsBoxEls[1].value == "" || fsBoxEls[2].value == "") {
+                fsBoxEls[3].value = "";
+            }
+        };
+        var fsClearAll = function() {
+            for (var i = 0; i < fsBoxEls.length; i++) {
+                fsBoxEls[i].value = null;
+            }
+        };
+        var fsCalculateTwice = function() {
+            fsCalculate();
+            fsCalculate();
+        };
+        fsCalcBtn.addEventListener("click", fsCalculateTwice);
+        fsClrBtn.addEventListener("click", fsClearAll);
+        var btCalculate = function() {
+              
+        };
+        var openFuelSurcharge = function() {
+            var fuelSurcharge = document.getElementById("fuel-surcharge");
+            var billtip = document.getElementById("billtip")
+            fuelSurcharge.style.display = "inline";
+            billtip.style.display = "none";
+        };
+        var openSurc = document.getElementById("open-surc");
+        openSurc.addEventListener("click", openFuelSurcharge);
+        var openBilltip = function() {
+            var fuelSurcharge = document.getElementById("fuel-surcharge");
+            var billtip = document.getElementById("billtip");
+            billtip.style.display = "inline";
+            fuelSurcharge.style.display = "none";
+        };
+        var openBt = document.getElementById("open-bt");
+        openBt.addEventListener("click", openBilltip);
+    </script>
+    </body>
+</html>
