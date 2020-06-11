@@ -42,7 +42,7 @@
             }
             .button {
                 position: absolute;
-                background-color: rgb(0, 217, 255);
+                background-color: rgb(0, 255, 255);
                 color: rgb(0, 14, 117);
                 top: 358px;
                 border: none;
@@ -81,7 +81,7 @@
                 color: red;
             }
             a:hover {
-                color: rgb(255, 132, 0);
+                color: orange;
             }
             li {
                position: relative;
@@ -208,6 +208,9 @@
         // buttons
         var fsCalcBtn = document.getElementById("fs-calcBtn");
         var fsClrBtn = document.getElementById("fs-clrBtn");
+        var btCalcBtn = document.getElementById("bt-calcBtn");
+        var btClrBtn = document.getElementById("bt-clrBtn");
+        // calculate values (fs)
         var fsCalculate = function() {
             // a buncha variables
             var surcharge = (fsBoxEls[2].value-fsBoxEls[1].value)/fsBoxEls[0].value;
@@ -224,7 +227,7 @@
             fsBoxEls[6].value = fsRounded[2];
             fsBoxEls[7].value = fsRounded[3];
             fsBoxEls[8].value = fsRounded[4];
-            // don't do weird stuff
+            // hide if value = 0
             if (surcharge === 0) {
                 fsBoxEls[3].value = null;
             }
@@ -238,7 +241,7 @@
                 fsBoxEls[3].value = "";
             }
         };
-        var fsClearAll = function() {
+        var fsClrAll = function() {
             for (var i = 0; i < fsBoxEls.length; i++) {
                 fsBoxEls[i].value = null;
             }
@@ -248,13 +251,33 @@
             fsCalculate();
         };
         fsCalcBtn.addEventListener("click", fsCalculateTwice);
-        fsClrBtn.addEventListener("click", fsClearAll);
+        fsClrBtn.addEventListener("click", fsClrAll);
+        // calculate values (bt)
         var btCalculate = function() {
-              
+            var tipAmt = (parseFloat(btBoxEls[0].value) + parseFloat(btBoxEls[1].value)) * (parseFloat(btBoxEls[2].value)/100);
+            var afterTip = parseFloat(btBoxEls[0].value)+parseFloat(btBoxEls[1].value)+tipAmt;
+            var perPerson = afterTip/parseFloat(btBoxEls[4].value);
+            // values array
+            var variables = [tipAmt, afterTip, perPerson];
+            // calculate rounded values
+            var btRounded = [tipAmt.toFixed(3), afterTip.toFixed(3), perPerson.toFixed(3)];
+            btBoxEls[3].value = btRounded[0];
+            btBoxEls[5].value = btRounded[1];
+            btBoxEls[6].value = btRounded[2];
         };
+        var btClrAll = function() {
+            for (var i = 0; i < btBoxEls.length; i++) {
+                btBoxEls[i].value = null;
+            }  
+        };
+        btCalcBtn.addEventListener("click", btCalculate);
+        btClrBtn.addEventListener("click", btClrAll);
+        // open each calculator
+        var fuelSurcharge = document.getElementById("fuel-surcharge");
+        var billtip = document.getElementById("billtip");
         var openFuelSurcharge = function() {
             var fuelSurcharge = document.getElementById("fuel-surcharge");
-            var billtip = document.getElementById("billtip")
+            var billtip = document.getElementById("billtip");
             fuelSurcharge.style.display = "inline";
             billtip.style.display = "none";
         };
@@ -268,6 +291,9 @@
         };
         var openBt = document.getElementById("open-bt");
         openBt.addEventListener("click", openBilltip);
+        if (fuelSurcharge.style.display = "inline") {
+            billtip.style.display = "none";
+        }
     </script>
     </body>
 </html>
