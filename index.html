@@ -24,7 +24,8 @@
                 margin-left: 5px;
             }
             input[type=number]:focus {
-                border: 2.5px solid gold;
+                border: 2px solid gold;
+                outline: none;
                 
             }
             .fs-label, .bt-label {
@@ -45,13 +46,16 @@
                 background-color: rgb(0, 255, 255);
                 color: rgb(0, 14, 117);
                 top: 358px;
-                border: none;
                 border-radius: 3px;
                 height: 31px;
                 cursor: pointer;
+                border: none;
             }
             .button:hover {
                 background-color: rgb(168, 243, 255);
+            }
+            .button:focus {
+                outline: none;
             }
             #fs-calcBtn, #bt-calcBtn {
                 left: 13px;
@@ -99,6 +103,9 @@
             #open-surc:hover {
                 background-color: yellow;
             }
+            #open-surc:focus {
+                outline: none;
+            }
             #open-bt {
                 position: absolute;
                 background-color: gold;
@@ -110,6 +117,9 @@
             }
             #open-bt:hover {
                 background-color: yellow;
+            }
+            #open-bt:focus {
+                outline: none;
             }
         </style>
     </head>
@@ -211,34 +221,69 @@
         var btCalcBtn = document.getElementById("bt-calcBtn");
         var btClrBtn = document.getElementById("bt-clrBtn");
         // calculate values (fs)
-        var fsCalculate = function() {
-            // a buncha variables
-            var surcharge = (fsBoxEls[2].value-fsBoxEls[1].value)/fsBoxEls[0].value;
-            var fuelQuan = fsBoxEls[4].value/fsBoxEls[0].value;
-            var baseCost = fsBoxEls[1].value*fuelQuan;
-            var currentC = fsBoxEls[2].value*fuelQuan;
-            var fuelSurc = fsBoxEls[3].value*fsBoxEls[4].value;
-            // values array
-            var variables = [fuelQuan, baseCost, currentC, fuelSurc]
-            // calculate rounded values
-            var fsRounded = [surcharge.toFixed(3), fuelQuan.toFixed(3), baseCost.toFixed(3), currentC.toFixed(3), fuelSurc.toFixed(3)]
-            fsBoxEls[3].value = fsRounded[0];
-            fsBoxEls[5].value = fsRounded[1];
-            fsBoxEls[6].value = fsRounded[2];
-            fsBoxEls[7].value = fsRounded[3];
-            fsBoxEls[8].value = fsRounded[4];
-            // hide if value = 0
-            if (surcharge === 0) {
-                fsBoxEls[3].value = null;
-            }
-            for (var i = 5; i < fsBoxEls.length; i++) {
-                if (variables[i-5] == 0) {
-                    fsBoxEls[i].value = null;
+        var fs = {
+            mpg: null,
+            base: null,
+            curPrice: null,
+            surcharge: null,
+            distance: null,
+            quantity: null,
+            tripB: null,
+            tripC: null,
+            tripS: null,
+            setMpg: setMpg = function(value) {
+                fs.mpg = value;
+            },
+            setBase: setBase = function(value) {
+                fs.base = value;
+            },
+            setCurPrice: setCurPrice = function(value) {
+                fs.curPrice = value;
+            },
+            setSurcharge: setSurcharge = function(value) {
+                fs.surcharge = value;
+            },
+            setDistance: setDistance = function(value) {
+                fs.distance = value;
+            },
+            setQuantity: setQuantity = function(value) {
+                fs.quantity = value;
+            },
+            setTripB: setTripB = function(value) {
+                fs.tripB = value;
+            },
+            setTripC: setTripC = function(value) {
+                fs.tripC = value;
+            },
+            setTripS: setTripS = function(value) {
+                fs.tripS = value;
+            },
+            calculate: calculate = function() {
+                fs.surcharge = (fs.curPrice-fs.base)/fs.mpg;
+                fs.quantity = fs.distance/fs.mpg;
+                fs.tripB = fs.base*fs.quantity;
+                fs.tripC = fs.curPrice*fs.quantity;
+                fs.tripS = fs.surcharge*fs.distance;
+                // hide if value = 0
+                if (fs.surcharge === 0) {
+                    fs.surcharge = null;
                 }
-            }
-            // don't calculate until stuff is inside
-            if (fsBoxEls[0].value == "" || fsBoxEls[1].value == "" || fsBoxEls[2].value == "") {
-                fsBoxEls[3].value = "";
+                if (fs.quantity === 0) {
+                    fs.quantity = null;
+                }
+                if (fs.tripB === 0) {
+                    fs.tripB = null;
+                }
+                if (fs.tripC === 0) {
+                    fs.tripC = null;
+                }
+                if (fs.tripS === 0) {
+                    fs.tripS = null;
+                }
+                // don't calculate until stuff is inside
+                if (fs.mpg == null || fs.base == null || fs.curPrice == null) {
+                    fs.surcharge = null;
+                }
             }
         };
         var fsClrAll = function() {
@@ -247,23 +292,113 @@
             }
         };
         var fsCalculateTwice = function() {
-            fsCalculate();
-            fsCalculate();
+            if (fsBoxEls[0].value !== "") {    
+                fs.setMpg(fsBoxEls[0].value);
+            }
+            if (fsBoxEls[1].value !== "") {    
+                fs.setBase(fsBoxEls[1].value);
+            }
+            if (fsBoxEls[2].value !== "") {    
+                fs.setCurPrice(fsBoxEls[2].value);
+            }
+            if (fsBoxEls[3].value !== "") {    
+                fs.setSurcharge(fsBoxEls[3].value);
+            }
+            if (fsBoxEls[4].value !== "") {    
+                fs.setDistance(fsBoxEls[4].value);
+            }
+            if (fsBoxEls[5].value !== "") {    
+                fs.setQuantity(fsBoxEls[5].value);
+            }
+            if (fsBoxEls[6].value !== "") {    
+                fs.setTripB(fsBoxEls[6].value);
+            }
+            if (fsBoxEls[7].value !== "") {    
+                fs.setTripC(fsBoxEls[7].value);
+            }
+            if (fsBoxEls[8].value !== "") {    
+                fs.setTripS(fsBoxEls[8].value);
+            }
+            fs.calculate();
+            fs.calculate();
+            fsBoxEls[3].value = fs.surcharge.toFixed(3);
+            fsBoxEls[5].value = fs.quantity.toFixed(3);
+            fsBoxEls[6].value = fs.tripB.toFixed(3);
+            fsBoxEls[7].value = fs.tripC.toFixed(3);
+            fsBoxEls[8].value = fs.tripS.toFixed(3);
         };
         fsCalcBtn.addEventListener("click", fsCalculateTwice);
         fsClrBtn.addEventListener("click", fsClrAll);
         // calculate values (bt)
+        var bt = {
+            beforeTip: null,
+            tax: null,
+            tipPercent: null,
+            tipAmt: null,
+            splitCt: null,
+            afterTip: null,
+            perPerson: null,
+            setBeforeTip: setBeforeTip = function(value) {
+                if (value !== "") {
+                    bt.beforeTip = parseFloat(value);
+                }
+            },
+            setTax: setTax = function(value) {
+                if (value !== "") {
+                    bt.tax = parseFloat(value);
+                }
+            },
+            setTipPercent: setTipPercent = function(value) {
+                if (value !== "") {
+                    bt.tipPercent = parseFloat(value);
+                }
+            },
+            setTipAmt: setTipAmt = function(value) {
+                if (value !== "") {
+                    bt.tipAmt = parseFloat(value);
+                } 
+            },
+            setSplitCt: setSplitCt = function(value) {
+                if (value !== "") {
+                    bt.splitCt = parseFloat(value);
+                }
+            },
+            setAfterTip: setAfterTip = function(value) {
+                if (value !== "") {
+                    bt.afterTip = parseFloat(value);
+                }
+            },
+            setPerPerson: setPerPerson = function(value) {
+                if (value !== "") {
+                    bt.perPerson = parseFloat(value);
+                } 
+            },
+            calculate: calculate = function() {
+                // calculate values
+                bt.tipAmt = (bt.beforeTip + bt.tax) * (bt.tipPercent/100);
+                bt.afterTip = bt.beforeTip+bt.tax+bt.tipAmt;
+                bt.perPerson = bt.afterTip/bt.splitCt;
+                // hide if value = 0
+                if (bt.afterTip === 0) {
+                    bt.afterTip = null;
+                }
+                if (bt.tipAmt === 0) {
+                    bt.tipAmt = null;
+                }
+            }
+        };
         var btCalculate = function() {
-            var tipAmt = (parseFloat(btBoxEls[0].value) + parseFloat(btBoxEls[1].value)) * (parseFloat(btBoxEls[2].value)/100);
-            var afterTip = parseFloat(btBoxEls[0].value)+parseFloat(btBoxEls[1].value)+tipAmt;
-            var perPerson = afterTip/parseFloat(btBoxEls[4].value);
-            // values array
-            var variables = [tipAmt, afterTip, perPerson];
-            // calculate rounded values
-            var btRounded = [tipAmt.toFixed(3), afterTip.toFixed(3), perPerson.toFixed(3)];
-            btBoxEls[3].value = btRounded[0];
-            btBoxEls[5].value = btRounded[1];
-            btBoxEls[6].value = btRounded[2];
+            bt.setBeforeTip(btBoxEls[0].value);
+            bt.setTax(btBoxEls[1].value);
+            bt.setTipPercent(btBoxEls[2].value);
+            bt.setTipAmt(btBoxEls[3].value);
+            bt.setSplitCt(btBoxEls[4].value);
+            bt.setAfterTip(btBoxEls[5].value);
+            bt.setPerPerson(btBoxEls[6].value);
+            bt.calculate();
+            btBoxEls[3].value = bt.tipAmt.toFixed(3);
+            btBoxEls[5].value = bt.afterTip.toFixed(3);
+            btBoxEls[6].value = bt.perPerson.toFixed(3);
         };
         var btClrAll = function() {
             for (var i = 0; i < btBoxEls.length; i++) {
