@@ -22,6 +22,8 @@
             .fs-box, .bt-box {
                 position: absolute;
                 margin-left: 5px;
+                border-radius: 6px;
+                width: 113px;
             }
             input[type=number]:focus {
                 border: 2px solid gold;
@@ -31,7 +33,7 @@
             .fs-label, .bt-label {
                 color: gold;
                 position: absolute;
-                left: 222px;
+                left: 143px;
                 font-family: sans-serif;
             }
             #clarification {
@@ -45,7 +47,6 @@
                 position: absolute;
                 background-color: rgb(0, 255, 255);
                 color: rgb(0, 14, 117);
-                top: 358px;
                 border-radius: 3px;
                 height: 31px;
                 cursor: pointer;
@@ -57,11 +58,21 @@
             .button:focus {
                 outline: none;
             }
-            #fs-calcBtn, #bt-calcBtn {
+            #fs-calcBtn {
                 left: 13px;
+                top: 358px;
             }
-            #fs-clrBtn, #bt-clrBtn {
+            #fs-clrBtn {
                 left: 111px;
+                top: 358px;
+            }
+            #bt-calcBtn {
+                left: 13px; 
+                top: 268px;
+            }
+            #bt-clrBtn {
+                left: 111px;
+                top: 268px;
             }
             h4 {
                 width: 108px;
@@ -99,12 +110,10 @@
                 height: 25px;
                 cursor: pointer;
                 left: 257px;
+                outline: none;
             }
             #open-surc:hover {
                 background-color: yellow;
-            }
-            #open-surc:focus {
-                outline: none;
             }
             #open-bt {
                 position: absolute;
@@ -114,12 +123,10 @@
                 height: 25px;
                 cursor: pointer;
                 left: 362px;
+                outline: none;
             }
             #open-bt:hover {
                 background-color: yellow;
-            }
-            #open-bt:focus {
-                outline: none;
             }
         </style>
     </head>
@@ -200,7 +207,7 @@
                     elGroup[i].style.top = 55+i*30+"px";
                 }
             } else if (elGroup === btBoxEls || elGroup === btLabelEls) {
-                elGroup[i].style.top = 55+i*44+"px";
+                elGroup[i].style.top = 55+i*30+"px";
             }
         }
         for (var i = 0; i < fsBoxEls.length; i++) {
