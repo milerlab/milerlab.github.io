@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+body {
+  background: mediumturquoise;
+  margin: 0;
+}
+h2 {
+  background: lightseagreen;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  height: 30px;
+  padding: 3px;
+  padding-bottom: 28px;
+  z-index: 2;
+}
+h3 {
+  position: absolute;
+  text-align: center;
+  background: gray;
+  width: 100%;
+  padding: 7px;
+}
+input {
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid;
+}
+.topnav {
+  background-color: aliceblue;
+  position: absolute;
+  top: 31px;
+}
+.topnav h4 {
+  cursor: pointer;
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 1px 10px;
+  text-decoration: none;
+  margin: 0;
+}
+.topnav h4:hover {
+  color: darkblue;
+}
+.topnav h4.active {
+  background-color: springgreen;
+  color: black;
+}
+a {
+  color: darkblue;
+  font-size: 24px;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+h3, p {
+  margin: 0;
+}
+.mySlides {
+  width: 320px;
+  position: absolute;
+  left: 128px;
+  border: 2px solid springgreen;
+  padding: 5px;
+}
+.arrow {
+  cursor: pointer;
+  position: fixed;
+  top: 120px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+.arrow:hover {
+  color: gray;
+}
+.fs-box, .bt-box {
+  position: absolute;
+  border-radius: 6px;
+  width: 113px;
+}
+.fs-box:focus, .bt-box:focus {
+  border: 2px solid gold;
+}
+.fs-label, .bt-label {
+  color: gold;
+  position: absolute;
+  left: 130px;
+  font-family: sans-serif;
+}
+#clarification {
+  color: gold;
+  position: absolute;
+  top: 240px;
+  margin-left: 2px;
+  font-family: sans-serif;
+}
+.button {
+  position: absolute;
+  background-color: aqua;
+  color: navy;
+  border-radius: 3px;
+  height: 31px;
+  cursor: pointer;
+  border: none;
+}
+.button:hover {
+  color: blue;
+}
+#calculator {
+  background: lightgray;
+  padding: 5px;
+  padding-right: 7px;
+  border-radius: 5px;
+  width: auto;
+  position: absolute;
+  left: 175px;
+}
+#calculator input {
+  width: 185px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  background: #ececec;
+  border: 1px solid;
+  border-radius: 2px;
+}
+.calc-btn {
+  width: 35px;
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 2px;
+  margin: 1px;
+  margin-right: -3px;
+  padding-left: 3.6px;
+}
+.calc-btn:hover {
+  background: lightgray;
+}
