@@ -1,3 +1,17 @@
+// utils
+function getNums(str) {
+  var matches = str.match(/\d+/);
+  if (matches) {
+    return parseFloat(matches[0]);
+  }
+}
+function fixDouble(num, fixLength) {
+  if (num != null) {
+    return num.toFixed(fixLength);
+  } else {
+    return null;
+  }
+}
 // slides
 var slideIndex = 0;
 showSlide(slideIndex);
