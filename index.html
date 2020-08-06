@@ -1,4 +1,10 @@
-<!-- header -->
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- header -->
 <h2>Miler Lab</h2>
 <!-- topnav -->
 <div class="topnav">
@@ -9,44 +15,22 @@
 <!-- mySlides -->
 <div class="mySlides" style="height: 440px;">
   <!-- stuff -->
-  <a
-    href="https://play.google.com/store/apps/details?id=com.milerlab.fuelsurcharge"
-    target="blank"
-    >Fuel Surcharge Calculator</a
-  >
+  <a href="https://play.google.com/store/apps/details?id=com.milerlab.fuelsurcharge" target="blank">Fuel Surcharge Calculator</a>
   <p>A bunch of stuff.</p>
   <h4>Online Version:</h4>
   <!-- fs calc -->
   <div id="fuel-surcharge">
     <!-- input -->
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >MPG/KPL</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Base Fuel Price</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Current Fuel Price</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Fuel Surcharge</span
-    >
+    <input class="fs-box" type="number" step="0.001"/><span class="fs-label">MPG/KPL</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Base Fuel Price</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Current Fuel Price</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Fuel Surcharge</span>
     <span id="clarification">Your trip:</span>
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Trip Distance</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Trip Fuel Quantity</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Trip Base Fuel Cost</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Trip Current Fuel Cost</span
-    >
-    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
-      >Trip Fuel Surcharge</span
-    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Trip Distance</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Trip Fuel Quantity</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Trip Base Fuel Cost</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Trip Current Fuel Cost</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label">Trip Fuel Surcharge</span>
     <!--buttons-->
     <button id="fs-calcBtn" style="top: 400px;" class="button">CALCULATE</button>
     <button id="fs-clrBtn" style="top: 400px; left: 100px;" class="button">CLEAR ALL</button>
@@ -54,37 +38,19 @@
 </div>
 <div class="mySlides" style="height: 350px;">
   <!-- stuff -->
-  <a
-    href="https://play.google.com/store/apps/details?id=com.milerlab.billtip"
-    target="blank"
-    >Bill and Tip Calculator</a
-  >
+  <a href="https://play.google.com/store/apps/details?id=com.milerlab.billtip" target="blank">Bill and Tip Calculator</a>
   <p>A bunch of stuff.</p>
   <h4>Online Version:</h4>
   <!-- bt calc -->
   <div id="billtip">
     <!-- input -->
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Amount Due Before Tip</span
-    >
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Tax</span
-    >
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Tip Percent (%)</span
-    >
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Tip Amount</span
-    >
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Split Count</span
-    >
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Amount Due After Tip</span
-    >
-    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
-      >Amount Due Per Person</span
-    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Amount Due Before Tip</span>
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Tax</span>
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Tip Percent (%)</span>
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Tip Amount</span>
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Split Count</span>
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Amount Due After Tip</span>
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label">Amount Due Per Person</span>
     <!--buttons-->
     <button id="bt-calcBtn" style="top: 310px;" class="button">CALCULATE</button>
     <button id="bt-clrBtn" style="top: 310px; left: 100px;" class="button">CLEAR ALL</button>
@@ -96,12 +62,8 @@
   <p>A bunch of stuff.</p>
 </div>
 <!-- arrows -->
-<span class="arrow" onclick="showSlide(slideIndex -= 1)" style="left: 95px;">
-  &#10094;
-</span>
-<span class="arrow" onclick="showSlide(slideIndex += 1)" style="left: 465px;">
-  &#10095;
-</span>
+<span class="arrow" onclick="showSlide(slideIndex -= 1)" style="left: 95px;">&#10094;</span>
+<span class="arrow" onclick="showSlide(slideIndex += 1)" style="left: 465px;">&#10095;</span>
 <!-- calc -->
 <div id="calculator">
   <input spellcheck="false"/>
@@ -142,3 +104,6 @@
 </div>
 <!-- contact -->
 <h3>Contact us at support@milerlab.com</h3>
+<script src="script.js"></script>
+</body>
+</html>
