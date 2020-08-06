@@ -1,441 +1,144 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Fuel Surcharge Calculator</title>
-        <style>
-            body {
-                background-color: rgb(0, 14, 117);
-            }
-            .header {
-                color: white;
-                position: absolute;
-                top: -21px;
-                left: -1px;
-                background-color: rgb(16, 163, 126);
-                width: 98.4%;
-                height: 40px;
-                padding: 1px;
-                padding-left: 10px;
-                font-family: sans-serif;
-            }
-            .fs-box, .bt-box {
-                position: absolute;
-                margin-left: 5px;
-                border-radius: 6px;
-                width: 113px;
-            }
-            input[type=number]:focus {
-                border: 2px solid gold;
-                outline: none;
-                
-            }
-            .fs-label, .bt-label {
-                color: gold;
-                position: absolute;
-                left: 143px;
-                font-family: sans-serif;
-            }
-            #clarification {
-                color: gold;
-                position: absolute;
-                top: 175px;
-                margin-left: 5px;
-                font-family: sans-serif;
-            }
-            .button {
-                position: absolute;
-                background-color: rgb(0, 255, 255);
-                color: rgb(0, 14, 117);
-                border-radius: 3px;
-                height: 31px;
-                cursor: pointer;
-                border: none;
-            }
-            .button:hover {
-                background-color: rgb(168, 243, 255);
-            }
-            .button:focus {
-                outline: none;
-            }
-            #fs-calcBtn {
-                left: 13px;
-                top: 358px;
-            }
-            #fs-clrBtn {
-                left: 111px;
-                top: 358px;
-            }
-            #bt-calcBtn {
-                left: 13px; 
-                top: 268px;
-            }
-            #bt-clrBtn {
-                left: 111px;
-                top: 268px;
-            }
-            h4 {
-                width: 108px;
-                padding-left: -30px;
-            }
-            #ad {
-                position: absolute;
-                top: 35px;
-                left: 462px;
-                width: 76px;
-                padding-left: 16px;
-                padding-right: 23px;
-                color: red;
-                position: absolute;
-                font-family: sans-serif;
-            }
-            a {
-                position: relative;
-                left: -3px;
-                text-decoration: underline;
-                color: red;
-            }
-            a:hover {
-                color: orange;
-            }
-            li {
-               position: relative;
-               left: -33px; 
-            }
-            #open-surc {
-                position: absolute;
-                background-color: gold;
-                border: none;
-                border-radius: 5px;
-                height: 25px;
-                cursor: pointer;
-                left: 257px;
-                outline: none;
-            }
-            #open-surc:hover {
-                background-color: yellow;
-            }
-            #open-bt {
-                position: absolute;
-                background-color: gold;
-                border: none;
-                border-radius: 5px;
-                height: 25px;
-                cursor: pointer;
-                left: 362px;
-                outline: none;
-            }
-            #open-bt:hover {
-                background-color: yellow;
-            }
-        </style>
-    </head>
-    <body>
-    <!--fuel surcharge-->
-    <div id="fuel-surcharge">
-    <!--header-->
-    <h1 class="header">Fuel Surcharge</h1>
-    <!--#1-->
-    <input class="fs-box" type="number" step="0.001"><span class="fs-label">MPG/KPL</span>
-    <!--#2-->
-    <input class="fs-box" type="number" step="0.001"><span class="fs-label">Base Fuel Price</span>
-    <!--#3-->
-    <input class="fs-box" type="number" step="0.001"><span class="fs-label">Current Fuel Price</span>
-    <!--#4-->
-    <input class="fs-box" type="number" step="0.001"><span class="fs-label">Fuel Surcharge</span>
-    <!--Next...-->
+<!-- header -->
+<h2>Miler Lab</h2>
+<!-- topnav -->
+<div class="topnav">
+  <h4 class="tab" onclick="showSlide(0)">Fuel Surc</h4>
+  <h4 class="tab" onclick="showSlide(1)">Bill & Tip</h4>
+  <h4 class="tab" onclick="showSlide(2)">Contact</h4>
+</div>
+<!-- mySlides -->
+<div class="mySlides" style="height: 440px;">
+  <!-- stuff -->
+  <a
+    href="https://play.google.com/store/apps/details?id=com.milerlab.fuelsurcharge"
+    target="blank"
+    >Fuel Surcharge Calculator</a
+  >
+  <p>A bunch of stuff.</p>
+  <h4>Online Version:</h4>
+  <!-- fs calc -->
+  <div id="fuel-surcharge">
+    <!-- input -->
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >MPG/KPL</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Base Fuel Price</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Current Fuel Price</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Fuel Surcharge</span
+    >
     <span id="clarification">Your trip:</span>
-    <!--#5-->
-    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Distance</span>
-    <!--#6-->
-    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Fuel Quantity</span>
-    <!--#7-->
-    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Base Fuel Cost</span>
-    <!--#8-->
-    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Current Fuel Cost</span>
-    <!--#9-->
-    <input class="fs-box" type="number" step="0.001"> <span class="fs-label">Trip Fuel Surcharge</span>
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Trip Distance</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Trip Fuel Quantity</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Trip Base Fuel Cost</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Trip Current Fuel Cost</span
+    >
+    <input class="fs-box" type="number" step="0.001" /><span class="fs-label"
+      >Trip Fuel Surcharge</span
+    >
     <!--buttons-->
-    <button id="fs-calcBtn" class="button">CALCULATE</button>
-    <button id="fs-clrBtn" class="button">CLEAR ALL</button>
-    </div>
-    <!--links-->
-    <span id="ad"><h4>Download these apps for more calculators:</h4>
-    <ul>
-        <li><a href="https://play.google.com/store/apps/details?id=com.milerlab.billtip" target="_blank">Everyday Calculator</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.milerlab.fuelsurcharge" target="_blank">Trucking Calculator</a></li>
-    </ul>
-    </span>
-    <!--billtip-->
-    <div id="billtip">
-    <!--header-->
-    <h1 class="header">Bill and Tip</h1>
-    <!--#1-->
-    <input class="bt-box" type="number" step="0.001"><span id="mpg" class="bt-label">Amount Due Before Tip</span>
-    <!--#2-->
-    <input class="bt-box" type="number" step="0.001"><span id="base" class="bt-label">Tax</span>
-    <!--#3-->
-    <input class="bt-box" type="number" step="0.001"><span id="current" class="bt-label">Tip Percent (%)</span>
-    <!--#4-->
-    <input class="bt-box" type="number" step="0.001"><span id="surcharge" class="bt-label">Tip Amount</span>
-    <!--#5-->
-    <input class="bt-box" type="number" step="0.001"> <span id="distance" class="bt-label">Split Count</span>
-    <!--#6-->
-    <input class="bt-box" type="number" step="0.001"> <span id="quantity" class="bt-label">Amount Due After Tip</span>
-    <!--#7-->
-    <input class="bt-box" type="number" step="0.001"> <span id="trip-b" class="bt-label">Amount Due Per Person</span>
+    <button id="fs-calcBtn" style="top: 400px;" class="button">CALCULATE</button>
+    <button id="fs-clrBtn" style="top: 400px; left: 100px;" class="button">CLEAR ALL</button>
+  </div>
+</div>
+<div class="mySlides" style="height: 350px;">
+  <!-- stuff -->
+  <a
+    href="https://play.google.com/store/apps/details?id=com.milerlab.billtip"
+    target="blank"
+    >Bill and Tip Calculator</a
+  >
+  <p>A bunch of stuff.</p>
+  <h4>Online Version:</h4>
+  <!-- bt calc -->
+  <div id="billtip">
+    <!-- input -->
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Amount Due Before Tip</span
+    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Tax</span
+    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Tip Percent (%)</span
+    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Tip Amount</span
+    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Split Count</span
+    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Amount Due After Tip</span
+    >
+    <input class="bt-box" type="number" step="0.001" /><span class="bt-label"
+      >Amount Due Per Person</span
+    >
     <!--buttons-->
-    <button id="bt-calcBtn" class="button">CALCULATE</button>
-    <button id="bt-clrBtn" class="button">CLEAR ALL</button>
-    </div>
-    <!--open each calculator-->
-    <button id="open-surc">Fuel Surcharge</button>
-    <button id="open-bt">Billtip</button>
-    <!--JavaScript-->
-    <script>
-        // find elements
-        var fsBoxEls = document.querySelectorAll(".fs-box");
-        var fsLabelEls = document.querySelectorAll(".fs-label");
-        var btBoxEls = document.querySelectorAll(".bt-box");
-        var btLabelEls = document.querySelectorAll(".bt-label");
-        // set positions
-        var positions = function(elGroup) {
-            if (elGroup === fsBoxEls || elGroup === fsLabelEls) {
-                if (i >= 4) {
-                    elGroup[i].style.top = 55+i*30+30 + "px";
-                } else {
-                    elGroup[i].style.top = 55+i*30+"px";
-                }
-            } else if (elGroup === btBoxEls || elGroup === btLabelEls) {
-                elGroup[i].style.top = 55+i*30+"px";
-            }
-        }
-        for (var i = 0; i < fsBoxEls.length; i++) {
-            positions(fsBoxEls);
-        }
-        for (var i = 0; i < fsLabelEls.length; i++) {
-            positions(fsLabelEls);
-        }
-        for (var i = 0; i < btBoxEls.length; i++) {
-            positions(btBoxEls);
-        }
-        for (var i = 0; i < btLabelEls.length; i++) {
-            positions(btLabelEls);
-        }
-        // buttons
-        var fsCalcBtn = document.getElementById("fs-calcBtn");
-        var fsClrBtn = document.getElementById("fs-clrBtn");
-        var btCalcBtn = document.getElementById("bt-calcBtn");
-        var btClrBtn = document.getElementById("bt-clrBtn");
-        // calculate values (fs)
-        var fs = {
-            mpg: null,
-            base: null,
-            curPrice: null,
-            surcharge: null,
-            distance: null,
-            quantity: null,
-            tripB: null,
-            tripC: null,
-            tripS: null,
-            setMpg: setMpg = function(value) {
-                fs.mpg = value;
-            },
-            setBase: setBase = function(value) {
-                fs.base = value;
-            },
-            setCurPrice: setCurPrice = function(value) {
-                fs.curPrice = value;
-            },
-            setSurcharge: setSurcharge = function(value) {
-                fs.surcharge = value;
-            },
-            setDistance: setDistance = function(value) {
-                fs.distance = value;
-            },
-            setQuantity: setQuantity = function(value) {
-                fs.quantity = value;
-            },
-            setTripB: setTripB = function(value) {
-                fs.tripB = value;
-            },
-            setTripC: setTripC = function(value) {
-                fs.tripC = value;
-            },
-            setTripS: setTripS = function(value) {
-                fs.tripS = value;
-            },
-            calculate: calculate = function() {
-                fs.surcharge = (fs.curPrice-fs.base)/fs.mpg;
-                fs.quantity = fs.distance/fs.mpg;
-                fs.tripB = fs.base*fs.quantity;
-                fs.tripC = fs.curPrice*fs.quantity;
-                fs.tripS = fs.surcharge*fs.distance;
-                // hide if value = 0
-                if (fs.surcharge === 0) {
-                    fs.surcharge = null;
-                }
-                if (fs.quantity === 0) {
-                    fs.quantity = null;
-                }
-                if (fs.tripB === 0) {
-                    fs.tripB = null;
-                }
-                if (fs.tripC === 0) {
-                    fs.tripC = null;
-                }
-                if (fs.tripS === 0) {
-                    fs.tripS = null;
-                }
-                // don't calculate until stuff is inside
-                if (fs.mpg == null || fs.base == null || fs.curPrice == null) {
-                    fs.surcharge = null;
-                }
-            }
-        };
-        var fsClrAll = function() {
-            for (var i = 0; i < fsBoxEls.length; i++) {
-                fsBoxEls[i].value = null;
-            }
-        };
-        var fsCalculateTwice = function() {
-            if (fsBoxEls[0].value !== "") {    
-                fs.setMpg(fsBoxEls[0].value);
-            }
-            if (fsBoxEls[1].value !== "") {    
-                fs.setBase(fsBoxEls[1].value);
-            }
-            if (fsBoxEls[2].value !== "") {    
-                fs.setCurPrice(fsBoxEls[2].value);
-            }
-            if (fsBoxEls[3].value !== "") {    
-                fs.setSurcharge(fsBoxEls[3].value);
-            }
-            if (fsBoxEls[4].value !== "") {    
-                fs.setDistance(fsBoxEls[4].value);
-            }
-            if (fsBoxEls[5].value !== "") {    
-                fs.setQuantity(fsBoxEls[5].value);
-            }
-            if (fsBoxEls[6].value !== "") {    
-                fs.setTripB(fsBoxEls[6].value);
-            }
-            if (fsBoxEls[7].value !== "") {    
-                fs.setTripC(fsBoxEls[7].value);
-            }
-            if (fsBoxEls[8].value !== "") {    
-                fs.setTripS(fsBoxEls[8].value);
-            }
-            fs.calculate();
-            fs.calculate();
-            fsBoxEls[3].value = fs.surcharge.toFixed(3);
-            fsBoxEls[5].value = fs.quantity.toFixed(3);
-            fsBoxEls[6].value = fs.tripB.toFixed(3);
-            fsBoxEls[7].value = fs.tripC.toFixed(3);
-            fsBoxEls[8].value = fs.tripS.toFixed(3);
-        };
-        fsCalcBtn.addEventListener("click", fsCalculateTwice);
-        fsClrBtn.addEventListener("click", fsClrAll);
-        // calculate values (bt)
-        var bt = {
-            beforeTip: null,
-            tax: null,
-            tipPercent: null,
-            tipAmt: null,
-            splitCt: null,
-            afterTip: null,
-            perPerson: null,
-            setBeforeTip: setBeforeTip = function(value) {
-                if (value !== "") {
-                    bt.beforeTip = parseFloat(value);
-                }
-            },
-            setTax: setTax = function(value) {
-                if (value !== "") {
-                    bt.tax = parseFloat(value);
-                }
-            },
-            setTipPercent: setTipPercent = function(value) {
-                if (value !== "") {
-                    bt.tipPercent = parseFloat(value);
-                }
-            },
-            setTipAmt: setTipAmt = function(value) {
-                if (value !== "") {
-                    bt.tipAmt = parseFloat(value);
-                } 
-            },
-            setSplitCt: setSplitCt = function(value) {
-                if (value !== "") {
-                    bt.splitCt = parseFloat(value);
-                }
-            },
-            setAfterTip: setAfterTip = function(value) {
-                if (value !== "") {
-                    bt.afterTip = parseFloat(value);
-                }
-            },
-            setPerPerson: setPerPerson = function(value) {
-                if (value !== "") {
-                    bt.perPerson = parseFloat(value);
-                } 
-            },
-            calculate: calculate = function() {
-                // calculate values
-                bt.tipAmt = (bt.beforeTip + bt.tax) * (bt.tipPercent/100);
-                bt.afterTip = bt.beforeTip+bt.tax+bt.tipAmt;
-                bt.perPerson = bt.afterTip/bt.splitCt;
-                // hide if value = 0
-                if (bt.afterTip === 0) {
-                    bt.afterTip = null;
-                }
-                if (bt.tipAmt === 0) {
-                    bt.tipAmt = null;
-                }
-            }
-        };
-        var btCalculate = function() {
-            bt.setBeforeTip(btBoxEls[0].value);
-            bt.setTax(btBoxEls[1].value);
-            bt.setTipPercent(btBoxEls[2].value);
-            bt.setTipAmt(btBoxEls[3].value);
-            bt.setSplitCt(btBoxEls[4].value);
-            bt.setAfterTip(btBoxEls[5].value);
-            bt.setPerPerson(btBoxEls[6].value);
-            bt.calculate();
-            btBoxEls[3].value = bt.tipAmt.toFixed(3);
-            btBoxEls[5].value = bt.afterTip.toFixed(3);
-            btBoxEls[6].value = bt.perPerson.toFixed(3);
-        };
-        var btClrAll = function() {
-            for (var i = 0; i < btBoxEls.length; i++) {
-                btBoxEls[i].value = null;
-            }  
-        };
-        btCalcBtn.addEventListener("click", btCalculate);
-        btClrBtn.addEventListener("click", btClrAll);
-        // open each calculator
-        var fuelSurcharge = document.getElementById("fuel-surcharge");
-        var billtip = document.getElementById("billtip");
-        var openFuelSurcharge = function() {
-            var fuelSurcharge = document.getElementById("fuel-surcharge");
-            var billtip = document.getElementById("billtip");
-            fuelSurcharge.style.display = "inline";
-            billtip.style.display = "none";
-        };
-        var openSurc = document.getElementById("open-surc");
-        openSurc.addEventListener("click", openFuelSurcharge);
-        var openBilltip = function() {
-            var fuelSurcharge = document.getElementById("fuel-surcharge");
-            var billtip = document.getElementById("billtip");
-            billtip.style.display = "inline";
-            fuelSurcharge.style.display = "none";
-        };
-        var openBt = document.getElementById("open-bt");
-        openBt.addEventListener("click", openBilltip);
-        if (fuelSurcharge.style.display = "inline") {
-            billtip.style.display = "none";
-        }
-    </script>
-    </body>
-</html>
+    <button id="bt-calcBtn" style="top: 310px;" class="button">CALCULATE</button>
+    <button id="bt-clrBtn" style="top: 310px; left: 100px;" class="button">CLEAR ALL</button>
+  </div>
+</div>
+<div class="mySlides">
+  <!-- stuff -->
+  <a href="#">???</a>
+  <p>A bunch of stuff.</p>
+</div>
+<!-- arrows -->
+<span class="arrow" onclick="showSlide(slideIndex -= 1)" style="left: 95px;">
+  &#10094;
+</span>
+<span class="arrow" onclick="showSlide(slideIndex += 1)" style="left: 465px;">
+  &#10095;
+</span>
+<!-- calc -->
+<div id="calculator">
+  <input spellcheck="false"/>
+  <br />
+  <button class="calc-btn">1</button>
+  <button class="calc-btn">2</button>
+  <button class="calc-btn">3</button>
+  <button class="calc-btn">4</button>
+  <button class="calc-btn">5</button>
+  <br />
+  <button class="calc-btn">6</button>
+  <button class="calc-btn">7</button>
+  <button class="calc-btn">8</button>
+  <button class="calc-btn">9</button>
+  <button class="calc-btn">0</button>
+  <br />
+  <button class="calc-btn">.</button>
+  <button class="calc-btn">+</button>
+  <button class="calc-btn">-</button>
+  <button class="calc-btn">(</button>
+  <button class="calc-btn">)</button>
+  <br />
+  <button class="calc-btn">x</button>
+  <button class="calc-btn">÷</button>
+  <button class="calc-btn">^</button>
+  <button class="calc-btn">√</button>
+  <button class="calc-btn">sin</button>
+  <br />
+  <button class="calc-btn">cos</button>
+  <button class="calc-btn">tan</button>
+  <button class="calc-btn">asin</button>
+  <button class="calc-btn">acos</button>
+  <button class="calc-btn">atan</button>
+  <br />
+  <button class="calc-btn">clr</button>
+  <button class="calc-btn">del</button>
+  <button class="calc-btn">=</button>
+</div>
+<!-- contact -->
+<h3>Contact us at support@milerlab.com</h3>
