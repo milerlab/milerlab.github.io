@@ -373,7 +373,3 @@ calcInput[0].onkeydown = function (e) {
 };
 var contact = document.getElementsByTagName('h3')[0];
 contact.style.top = getNums(calc.style.top) + 182 + "px";
-function goAway() {
-  alert('Go away!');
-}
-setInterval(goAway, 900000);
