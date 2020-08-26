@@ -1,4 +1,3 @@
-// utils
 function getNums(str) {
   var matches = str.match(/\d+/);
   if (matches) {
@@ -17,10 +16,8 @@ var slideIndex = 0;
 showSlide(slideIndex);
 var slides = document.getElementsByClassName('mySlides');
 function showSlide(num) {
-  var tabs = document.getElementsByClassName('tab');
+  var tabs = document.querySelectorAll('nav a');
   var slides = document.getElementsByClassName('mySlides');
-  var calc = document.getElementById('calculator');
-  var contact = document.getElementsByTagName('h3')[0];
   slideIndex = num;
   for (var i = 0; i < slides.length; i++) {
     slides[i].style.display = 'none';
@@ -32,36 +29,14 @@ function showSlide(num) {
     slideIndex = 0;
   }
   for (i = 0; i < tabs.length; i++) {
-    tabs[i].className = 'tab';
+    tabs[i].className = '';
   }
   slides[slideIndex].style.display = 'block';
   tabs[slideIndex].className += ' active';
-  calc.style.top = getNums(slides[slideIndex].style.top)
-  + getNums(slides[slideIndex].style.height) + 10 + "px";
-  contact.style.top = getNums(calc.style.top) + 182 + "px";
-}
-document.onkeydown = function(e) {
-  if (e.key == "ArrowLeft") {
-    showSlide(slideIndex + -1);
-  } else if (e.key == "ArrowRight") {
-    showSlide(slideIndex + 1);
-  }
 }
 for (var i = 0; i < slides.length; i++) {
   slides[i].style.top = '60px';
 }
-window.onscroll = function () {
-  var arrows = document.getElementsByClassName('arrow');
-  if (window.scrollY >= getNums(slides[slideIndex].style.height) - 120) {
-    for (var i = 0; i < arrows.length; i++) {
-      arrows[i].style.position = 'absolute';
-    }
-  } else if (window.scrollY <= getNums(slides[slideIndex].style.height) - 120) {
-    for (var i = 0; i < arrows.length; i++) {
-      arrows[i].style.position = 'fixed';
-    }
-  }
-};
 // online calcs
 var fsBoxEls = document.getElementsByClassName('fs-box');
 var fsLabelEls = document.getElementsByClassName('fs-label');
@@ -294,8 +269,6 @@ btClrBtn.addEventListener('click', btClrAll);
 var calc = document.getElementById('calculator');
 var calcBtn = document.getElementsByClassName('calc-btn');
 var calcInput = document.querySelectorAll('#calculator input');
-calc.style.top = getNums(slides[slideIndex].style.top)
-+ getNums(slides[slideIndex].style.height) + 10 + "px"
 function onClickEvent(e) {
   calcInput[0].value += e.target.firstChild.nodeValue;
 }
@@ -356,9 +329,14 @@ for (var i = 0; i < calcBtn.length - 1; i++) {
   });
 }
 calcInput[0].onkeydown = function (e) {
-  if (e.location == 0 && e.key != 'Escape' && 
-  e.key != "ArrowLeft" && e.key != "ArrowRight"
-  && e.key != "ArrowUp" && e.key != "ArrowDown") {
+  if (
+    e.location == 0 &&
+    e.key != 'Escape' &&
+    e.key != 'ArrowLeft' &&
+    e.key != 'ArrowRight' &&
+    e.key != 'ArrowUp' &&
+    e.key != 'ArrowDown'
+  ) {
     calcInput[0].style.color = '#595959';
   }
   if (e.key == 'Enter') {
@@ -371,5 +349,3 @@ calcInput[0].onkeydown = function (e) {
     }
   }
 };
-var contact = document.getElementsByTagName('h3')[0];
-contact.style.top = getNums(calc.style.top) + 182 + "px";
