@@ -46,7 +46,7 @@ nav a.active {
   width: 310px;
   position: absolute;
   left: 45px;
-  margin-top: 50px;
+  margin-top: 5px;
   border: 2px solid springgreen;
   padding: 5px;
 }
