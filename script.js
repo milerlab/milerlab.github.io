@@ -1,4 +1,3 @@
-alert("asdasdhgajdhfgsjdhfjsdhf");
 function getNums(str) {
   var matches = str.match(/\d+/);
   if (matches) {
