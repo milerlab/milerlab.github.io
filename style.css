@@ -2,12 +2,10 @@
   box-sizing: border-box;
   outline: none;
 }
-body {
-  background: mediumturquoise;
-  margin: 0;
-}
 h2 {
-  background: lightseagreen;
+  background: white;
+  color: darkblue;
+  box-shadow: 0 1px 5px darkgray;
   position: fixed;
   left: 0;
   top: 0;
@@ -16,69 +14,47 @@ h2 {
   height: 30px;
   padding: 3px;
   padding-bottom: 28px;
-  z-index: 2;
-}
-h3 {
-  position: absolute;
-  text-align: center;
-  background: gray;
-  width: 100%;
-  padding: 7px;
+  z-index: 1;
 }
 input {
   outline: none;
   border-radius: 5px;
   border: 2px solid;
 }
-.topnav {
-  background-color: aliceblue;
+nav {
   position: absolute;
-  top: 31px;
+  top: 35px;
+  margin-left: -7px;
 }
-.topnav h4 {
+nav a {
   cursor: pointer;
   float: left;
   color: black;
+  background: aliceblue;
   text-align: center;
   padding: 1px 10px;
-  text-decoration: none;
-  margin: 0;
+  margin-top: -5px;
 }
-.topnav h4:hover {
-  color: darkblue;
+nav a:hover {
+  color: mediumblue;
 }
-.topnav h4.active {
-  background-color: springgreen;
+nav a.active {
   color: black;
-}
-a {
-  color: darkblue;
-  font-size: 24px;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-h3, p {
-  margin: 0;
+  background: springgreen;
 }
 .mySlides {
-  width: 320px;
+  width: 310px;
   position: absolute;
-  left: 128px;
+  left: 45px;
+  margin-top: 5px;
   border: 2px solid springgreen;
   padding: 5px;
 }
-.arrow {
-  cursor: pointer;
-  position: fixed;
-  top: 120px;
-  color: white;
-  font-weight: bold;
+.mySlides a {
   font-size: 24px;
 }
-.arrow:hover {
-  color: gray;
+h3, p {
+  margin: 0;
 }
 .fs-box, .bt-box {
   position: absolute;
@@ -103,7 +79,7 @@ h3, p {
 }
 .button {
   position: absolute;
-  background-color: aqua;
+  background: aqua;
   color: navy;
   border-radius: 3px;
   height: 31px;
@@ -113,14 +89,47 @@ h3, p {
 .button:hover {
   color: blue;
 }
+.arrow {
+  cursor: pointer;
+  top: 120px;
+  color: darkgray;
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 24px;
+  position: absolute;
+}
+.arrow:hover {
+  color: gray;
+}
+#ad {
+  position: absolute;
+  top: 65px;
+  left: 415px;
+  width: fit-content;
+  height: 95px;
+  border: 2px ridge mediumblue;
+  padding: 5px;
+}
+#ad a {
+  background: mediumblue;
+  color: white;
+  width: 125px;
+  display: block;
+  padding: 3px;
+  margin-bottom: -15px;
+  text-decoration: none;
+}
 #calculator {
   background: lightgray;
   padding: 5px;
   padding-right: 7px;
+  padding-bottom: 8px;
   border-radius: 5px;
   width: auto;
   position: absolute;
-  left: 175px;
+  left: 415px;
+  top: 170px;
 }
 #calculator input {
   width: 185px;
