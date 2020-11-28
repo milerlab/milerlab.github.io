@@ -42,6 +42,24 @@ nav a.active {
   color: black;
   background: springgreen;
 }
+#ad {
+  position: absolute;
+  top: 65px;
+  left: 415px;
+  width: fit-content;
+  height: 95px;
+  border: 2px ridge mediumblue;
+  padding: 5px;
+}
+#ad a {
+  background: mediumblue;
+  color: white;
+  font-family: sans-serif;
+  display: block;
+  padding: 3px;
+  margin-bottom: -15px;
+  text-decoration: none;
+}
 .mySlides {
   width: 310px;
   position: absolute;
@@ -101,25 +119,6 @@ h3, p {
 }
 .arrow:hover {
   color: gray;
-}
-#ad {
-  position: absolute;
-  top: 65px;
-  left: 415px;
-  width: fit-content;
-  height: 95px;
-  border: 2px ridge mediumblue;
-  padding: 5px;
-}
-#ad a {
-  background: mediumblue;
-  color: white;
-  font-family: sans-serif;
-  width: 117px;
-  display: block;
-  padding: 3px;
-  margin-bottom: -15px;
-  text-decoration: none;
 }
 #calculator {
   background: lightgray;
