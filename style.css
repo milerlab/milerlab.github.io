@@ -42,7 +42,7 @@ nav a.active {
   color: black;
   background: springgreen;
 }
-#ad {
+#download {
   position: absolute;
   top: 65px;
   left: 415px;
@@ -51,7 +51,7 @@ nav a.active {
   border: 2px ridge mediumblue;
   padding: 5px;
 }
-#ad a {
+#download a {
   font-family: sans-serif;
 }
 .mySlides {
