@@ -315,6 +315,9 @@ calcBtn[calcBtn.length - 2].addEventListener('click', function () {
   );
 });
 calcBtn[calcBtn.length - 1].addEventListener('click', function () {
+  if (calcInput[0].value == "ice*ice*ice" || calcInput[0].value == "ice * ice * ice") {
+    calcInput[0].value = "cubed ice";
+  }
   try {
     if (eval(calcInput[0].value) != null && eval(calcInput[0].value) != NaN) {
       calcInput[0].value = eval(calcInput[0].value);
@@ -340,6 +343,9 @@ calcInput[0].onkeydown = function (e) {
     calcInput[0].style.color = '#595959';
   }
   if (e.key == 'Enter') {
+    if (calcInput[0].value == "ice*ice*ice" || calcInput[0].value == "ice * ice * ice") {
+      calcInput[0].value = "cubed ice";
+    }
     try {
       if (eval(calcInput[0].value) != null) {
         calcInput[0].value = eval(calcInput[0].value);
