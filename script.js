@@ -324,6 +324,10 @@ calcBtn[calcBtn.length - 1].addEventListener('click', function () {
     }
   } catch {
     calcInput[0].style.color = 'firebrick';
+  } finally {
+    if (calcInput[0].value == "ice*ice*ice" || calcInput[0].value == "ice * ice * ice") {
+      calcInput[0].value = "cubed ice";
+    }
   }
 });
 for (var i = 0; i < calcBtn.length - 1; i++) {
@@ -343,15 +347,16 @@ calcInput[0].onkeydown = function (e) {
     calcInput[0].style.color = '#595959';
   }
   if (e.key == 'Enter') {
-    if (calcInput[0].value == "ice*ice*ice" || calcInput[0].value == "ice * ice * ice") {
-      calcInput[0].value = "cubed ice";
-    }
     try {
       if (eval(calcInput[0].value) != null) {
         calcInput[0].value = eval(calcInput[0].value);
       }
     } catch {
       calcInput[0].style.color = 'firebrick';
+    } finally {
+      if (calcInput[0].value == "ice*ice*ice" || calcInput[0].value == "ice * ice * ice") {
+        calcInput[0].value = "cubed ice";
+      }
     }
   }
 };
