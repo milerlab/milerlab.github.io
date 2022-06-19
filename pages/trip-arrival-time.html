@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Trip Arrival Time</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/styles.min.css?h=51a3dc46be9b9f91714755d28e0cc151">
+    
+    </head>
+    <body>
+        <!-- Page content-->
+        <div class="container">
+            <div class="mt-5">
+                <p>This is a trip ETA estimator. It also estimates the trip start time when a required arrival time is
+                    entered. If your trip has multiple stops, you can click the + button to add a stop.
+                    Distance = Drive Hours times Distance per Hour (MPH or KPH).
+                    All hours fields are in HH:mm format (e.g. 09:15 or 21:30).
+                </p>
+                <ul>
+                    <li><strong>d:HH:mm</strong>: d (days): trip days (1 to 9). HH (hours): 0 to 23. mm (minutes): 0 to 59</li>
+                    <li><strong>Distance per Hour</strong>: miles per hour or kilometers per hour</li>
+                    <li><strong>Start Time</strong>: trip start time or previous stop departure time in d:HH:mm</li>
+                    <li><strong>Distance to Stop</strong>: miles or kilometers to next stop</li>
+                    <li><strong>Drive Hours to Stop</strong>: hours of driving needed to reach next stop</li>
+                    <li><strong>Idle Hours to Stop</strong>: hours of non-driving activities needed to reach next stop, e.g., rest, break, meal break and fuel stop</li>
+                    <li><strong>Arrival Time</strong>: stop arrival time in d:HH:mm</li>
+                    <li><strong>Window Start</strong>: (optional) If you arrive before the window start time, you must wait (in d:HH:mm)</li>
+                    <li><strong>Window End</strong>: (optional) Arrival after window end time is considered being late (in d:HH:mm)</li>
+                    <li><strong>Hours Wait</strong>: Window Start Time minus Arrival Time (for early arrival only)</li>
+                    <li><strong>Hours Late</strong>: Arrival Time minus Window End Time</li>
+                    <li><strong>Load/Unload Hours</strong>: load/unload hours at the stop</li>    
+                    <li><strong>Departure Time</strong>: stop departure time in d:HH:mm</li>    
+                    <li><strong>Hours Between Stops</strong>: elapsed time from start time to stop departure</li>    
+                </ul>        
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

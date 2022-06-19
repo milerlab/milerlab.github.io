@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Trip Planning with Hours of Service</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/styles.min.css?h=51a3dc46be9b9f91714755d28e0cc151">
+    
+    </head>
+    <body>
+        <!-- Page content-->
+        <div class="container">
+            <div class="mt-5">
+                <p>This is a multi-stop trip ETA estimator with hours of service consideration. There are driver and trip
+                    views in this calculator. Fill in driver's available HOS hours data at the trip start in driver view.
+                    If a driver has full driving and duty hours, please check "Full Hours Available".
+                    Switch to trip view. In trip view, fill in trip start time, stop appointment and required drive hours between stops.
+                    Click on calculate button to get trip stop arrival, departure times and total trip hours. 
+                    Wait or late hours are also calculated for a stop with appointment time window. 
+                    The HOS hours left after the trip are computed to help drivers make decisions for the next load.</p>
+
+                    <p>If trip start time is left empty, the calculator will estimate the proper trip start time. 
+                    In this scenario, we assume that a driver has full HOS hours available.</p>
+
+                    <p>If your fill in fixed cost per day, then trip calculation will produce the fixed cost for the trip by considering total hours consumed by the trip. 
+                    Once you know the trip fixed cost, use formula "Profit = Revenue - Variable Cost - Fixed Cost" to find out your profit for running this trip.</p>
+
+                    <p>All duration hours fields are in HH:mm format, e.g., 09:15 or 21:30.<br>
+                    All time fields are in d:HH:mm format, e.g., 1:08:30 or 1:20:45.</p>
+            
+                <p>Inputs:</p>
+                <ul>
+                    <li><strong>d:HH:mm</strong>: d (days): for trip days (1 to 9). HH (hours): 0 to 23. mm (minutes): 0 to 59</li>
+                    <li><strong>Duty Left</strong>: number of duty hours left at trip start</li>
+                    <li><strong>Driving Left</strong>: number of driving hours left at trip start</li>
+                    <li><strong>Till Break</strong>: number of hours until next required short break</li>
+                    <li><strong>Start Time</strong>: trip start time in d:HH:mm. Proper start time will be calculated if this is left blank.</li>
+                    <li><strong>Fixed Cost per Day</strong>: (optional) Enter this if you would like to know the fixed cost for the trip.</li>
+                    <li><strong>Drive Hours</strong>: hours of driving needed to reach the stop</li>    
+                    <li><strong>Stop Hours</strong>: load/unload hours at the stop</li>    
+
+                    <li><strong>Window Start</strong>: (optional) If the driver arrives before the window start time, they must wait (in d:HH:mm).</li>
+                    <li><strong>Window End</strong>: (optional) The driver must arrive by this time. Arrival after window end time is considered being late (in d:HH:mm).</li>
+                </ul>
+                <p>Outputs:</p>
+
+                <ul>
+                    <li><strong>Arrival</strong>: estimated arrival time at a stop in d:HH:mm</li>
+                    <li><strong>Departure</strong>: estimated departure time from a stop in d:HH:mm</li>
+                    <li><strong>Hours Wait</strong>: Window Start Time minus Arrival Time, if driver arrives early</li>
+                    <li><strong>Hours Late</strong>: Arrival Time minus Window End Time, if driver is late</li>
+                    <li><strong>Trip Hours</strong>: total trip hours</li>
+                    <li><strong>Duty Hours Left</strong>: estimated remaining duty hours at the end of trip</li>    
+                    <li><strong>Drive Hours Left</strong>: estimated remaining driving hours at the end of trip</li>    
+                    <li><strong>Trip Fixed Cost</strong>: Trip Days for Fixed Cost multiplied by Fixed Cost per Day</li>                
+                </ul>        
+
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
